@@ -1,10 +1,11 @@
 import Service from 'ember-service';
 import { bind } from 'ember-runloop';
+import { A as emberArray } from 'ember-array/utils';
 
 export default Service.extend({
   init() {
     this._super(...arguments);
-    this.set('_polls', []);
+    this.set('_polls', emberArray([]));
   },
   willDestroy() {
     this.stopAll();
