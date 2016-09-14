@@ -106,38 +106,51 @@ this.get('poll').startPollByLabel('server ping');
 This service exposes for adding, stopping, and restarting polls.
 
 * `addPoll({ interval, callback, [label] })`
+
 `interval Number`
+
 `callback Function`
+
 `label String`
+
 returns `pollId Number`
 
 Adds a poll to the service and starts it *immediately*. Returns a unique id which can be used to reference the poll in other parts of the API.
 
 * `startPoll( pollId )`
+
 `pollId Number`
+
 returns `pollId Number`
 
 Starts a previously added poll and returns its *new* ID. *Note:* each time a polls is started, it is assigned a new id which must be tracked by the user for future reference.
 
 * `startPollByLabel( pollLabel )`
+
 `pollLabel String`
+
 returns `pollId Number`
 
 See `startPoll` for description. *Note:* a given poll's label is constant between starts and stops. This method will still return the polls updated ID.
 
 * `stopPoll( pollId )`
+
 `pollId Number`
+
 returns `void`
 
 Stops a previously added poll.
 
 * `stopPollByLabel( pollLabel )`
+
 `pollLabel String`
+
 returns `void`
 
 Stops a previously added poll.
 
 * `stopAll()`
+
 returns `void`
 
 Stops all polls.
