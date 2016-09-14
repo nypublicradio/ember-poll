@@ -41,7 +41,14 @@
     "loader.js": "^4.0.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "ember-poll",
+    "poll",
+    "polling",
+    "new york public radio",
+    "ny public radio",
+    "wnyc",
+    "wqxr"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.6"
