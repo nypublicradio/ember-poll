@@ -32,7 +32,7 @@ We can rely on the native `setInterval` function if the passed function is bound
 
 ## Installing
 
-`npm install ember-poll`
+`npm install ember-poll --save-dev`
 
 ## Usage
 
