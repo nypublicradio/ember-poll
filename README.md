@@ -1,6 +1,9 @@
 # ember-poll
 
-## A polling service for your ember apps
+*A polling service for your ember apps*
+
+![Download count all time](https://img.shields.io/npm/dt/ember-poll.svg) [![npm version](https://badge.fury.io/js/ember-poll.svg)](http://badge.fury.io/js/ember-poll) [![CircleCI](https://circleci.com/gh/nypublicradio/ember-poll/tree/master.svg?style=svg)](https://circleci.com/gh/nypublicradio/ember-poll/tree/master) [![Ember Observer Score](http://emberobserver.com/badges/ember-poll.svg)](http://emberobserver.com/addons/ember-poll)
+
 
 Ember provides equivalents for `setTimeout`, but nothing for `setInterval`. This add-on offers a service you can use to manage intervals throughout your app.
 
