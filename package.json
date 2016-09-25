@@ -1,7 +1,7 @@
 {
   "name": "ember-poll",
   "version": "1.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A polling service for your ember apps.",
   "directories": {
     "doc": "doc",
     "test": "tests"
