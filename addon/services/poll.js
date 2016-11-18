@@ -38,8 +38,10 @@ export default Service.extend({
     clearInterval(handle);
   },
   stopPollByLabel(label) {
-    let { handle } = this._polls.findBy('label', label);
-    this.stopPoll(handle);
+    let poll = this._polls.findBy('label', label);
+    if (poll) {
+      this.stopPoll(poll.handle);
+    }
   },
   stopAll() {
     let handles = this._polls.mapBy('handle');
