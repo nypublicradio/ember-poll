@@ -42,6 +42,7 @@ module.exports = {
     },
     {
       name: 'ember-canary',
+      allowedToFail: true,
       bower: {
         dependencies: {
           'ember': 'components/ember#canary'
