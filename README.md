@@ -49,20 +49,22 @@ export default Ember.Route.extend({
     return this.store.find('post');
   },
   
-  didTransition() {
-    let pollFunction = () => Ember.$.ajax('/api/ping');
-    let pollId = this.get('poll').addPoll({
-      interval: 60 * 1000, // one minute
-      callback: pollFunction
-    });
+  actions: {
+    didTransition() {
+      let pollFunction = () => Ember.$.ajax('/api/ping');
+      let pollId = this.get('poll').addPoll({
+        interval: 60 * 1000, // one minute
+        callback: pollFunction
+      });
+      
+      this.set('pollId', pollId);
+    },
     
-    this.set('pollId', pollId);
-  },
-  
-  
-  willTransition() {
-    let pollId = this.get('pollId');
-    this.get('poll').stopPoll(pollId);
+    
+    willTransition() {
+      let pollId = this.get('pollId');
+      this.get('poll').stopPoll(pollId);
+    }
   }
   
 });
@@ -139,7 +141,7 @@ See `startPoll` for description. *Note:* a given poll's label is constant betwee
 
 `pollId Number`
 
-returns `void`
+returns `undefined`
 
 Stops a previously added poll.
 
@@ -147,15 +149,23 @@ Stops a previously added poll.
 
 `pollLabel String`
 
-returns `void`
+returns `undefined`
 
 Stops a previously added poll.
 
 * `stopAll()`
 
-returns `void`
+returns `undefined`
 
 Stops all polls.
+
+* `clarPoll( pollId )`
+
+`pollId Number`
+
+returns `undefined`
+
+Removes a poll from the service's internal list of polls. If you are attempting to start and stop the same poll, this can be easier than tracking the returned handle. Polls will build up in the service's internal list as they are added, but they won't be removed when they are stopped. If the same poll is added on a recurring basis, it could cause a memory leak. Use `clearPoll` if the plan is to start and stop the same poll.
 
 ## Contributing
 
