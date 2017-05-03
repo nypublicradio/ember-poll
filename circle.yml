@@ -1,3 +1,7 @@
+machine:
+  node:
+    version: 6.10.2
+
 dependencies:
   pre:
     - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
