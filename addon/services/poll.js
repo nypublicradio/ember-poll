@@ -48,6 +48,18 @@ export default Service.extend({
     handles.forEach(this.stopPoll);
   },
 
+  clearPoll(handle) {
+    let poll = this._polls.findBy('handle', handle);
+    this.stopPoll(poll.handle);
+    this._polls.removeObject(poll);
+  },
+  clearPollByLabel(label) {
+    let poll = this._polls.findBy('label', label);
+    if (poll) {
+      this.clearPoll(poll.handle);
+    }
+  },
+
   _schedule(fn, interval) {
     return setInterval(bind(this, fn), interval);
   },

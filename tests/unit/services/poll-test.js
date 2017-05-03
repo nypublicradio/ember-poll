@@ -218,3 +218,69 @@ test('it can start a poll by label', function(assert) {
   }, delay);
 
 });
+
+test('it can clear a poll', function(assert) {
+  assert.expect(4);
+
+  let service = this.subject();
+  let counter1 = 0;
+  let counter2 = 0;
+  let done = assert.async();
+
+  const interval = 2;
+  const delay = 20;
+
+  let poll1 = service.addPoll({ interval, callback: () => counter1++ });
+  let poll2 = service.addPoll({ interval, callback: () => counter2++ });
+
+  later(function() {
+    service.stopPoll(poll2);
+    service.clearPoll(poll1);
+    let currentCount1 = counter1;
+    let currentCount2 = counter2;
+    
+    assert.equal(service._polls.length, 1, 'only one poll should remain');
+    assert.notOk(service._polls.findBy('handle', poll1), 'cleared poll should be gone');
+
+    later(() => {
+      assert.equal(currentCount1, counter1, 'poll1 counts should be equal after pausing');
+      assert.equal(currentCount2, counter2, 'poll2 counts should be equal after pausing');
+      done();
+    }, delay * 2);
+
+  }, delay);
+  
+});
+
+test('it can clear a poll by label', function(assert) {
+  assert.expect(4);
+
+  let service = this.subject();
+  let counter1 = 0;
+  let counter2 = 0;
+  let done = assert.async();
+
+  const interval = 2;
+  const delay = 20;
+
+  service.addPoll({ interval, label: 'poll1', callback: () => counter1++ });
+  service.addPoll({ interval, label: 'poll2', callback: () => counter2++ });
+
+  later(function() {
+    service.stopPollByLabel('poll2');
+    service.clearPollByLabel('poll1');
+    let currentCount1 = counter1;
+    let currentCount2 = counter2;
+    
+    assert.equal(service._polls.length, 1, 'only one poll should remain');
+    assert.notOk(service._polls.findBy('label', 'poll1'), 'cleared poll should be gone');
+
+    later(() => {
+      assert.equal(currentCount1, counter1, 'poll1 counts should be equal after pausing');
+      assert.equal(currentCount2, counter2, 'poll2 counts should be equal after pausing');
+      done();
+    }, delay * 2);
+
+  }, delay);
+  
+});
