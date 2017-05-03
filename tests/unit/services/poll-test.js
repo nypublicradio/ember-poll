@@ -284,3 +284,37 @@ test('it can clear a poll by label', function(assert) {
   }, delay);
   
 });
+
+test('it can clear all polls', function(assert) {
+  assert.expect(5);
+
+  let service = this.subject();
+  let counter1 = 0;
+  let counter2 = 0;
+  let done = assert.async();
+
+  const interval = 2;
+  const delay = 20;
+
+  service.addPoll({ interval, label: 'poll1', callback: () => counter1++ });
+  service.addPoll({ interval, label: 'poll2', callback: () => counter2++ });
+
+  later(function() {
+    service.clearAll();
+    let currentCount1 = counter1;
+    let currentCount2 = counter2;
+    
+    assert.equal(service._polls.length, 0, 'no polls should exist');
+    assert.notOk(service._polls.findBy('label', 'poll1'), 'cleared poll should be gone');
+    assert.notOk(service._polls.findBy('label', 'poll2'), 'cleared poll should be gone');
+
+    later(() => {
+      assert.equal(currentCount1, counter1, 'poll1 counts should be equal after pausing');
+      assert.equal(currentCount2, counter2, 'poll2 counts should be equal after pausing');
+      done();
+    }, delay * 2);
+
+  }, delay);
+  
+  
+});

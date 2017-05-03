@@ -59,6 +59,10 @@ export default Service.extend({
       this.clearPoll(poll.handle);
     }
   },
+  clearAll() {
+    let handles = this._polls.mapBy('handle');
+    handles.forEach(bind(this, 'clearPoll'));
+  },
 
   _schedule(fn, interval) {
     return setInterval(bind(this, fn), interval);

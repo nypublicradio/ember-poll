@@ -159,13 +159,28 @@ returns `undefined`
 
 Stops all polls.
 
-* `clarPoll( pollId )`
+* `clearPoll( pollId )`
 
 `pollId Number`
 
 returns `undefined`
 
 Removes a poll from the service's internal list of polls. If you are attempting to start and stop the same poll, this can be easier than tracking the returned handle. Polls will build up in the service's internal list as they are added, but they won't be removed when they are stopped. If the same poll is added on a recurring basis, it could cause a memory leak. Use `clearPoll` if the plan is to start and stop the same poll.
+
+* `clearPollByLabel( pollLabel )`
+
+`pollLabel String`
+
+returns `undefined`
+
+Clears a previously added poll looked up by its label.
+
+* `clearAll()`
+
+returns `undefined`
+
+Clears all polls.
+
 
 ## Contributing
 
