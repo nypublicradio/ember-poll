@@ -35,7 +35,9 @@ export default Service.extend({
   },
 
   stopPoll(handle) {
-    clearInterval(handle);
+    if (handle && typeof clearInterval !== 'undefined') {
+      clearInterval(handle);
+    }
   },
   stopPollByLabel(label) {
     let poll = this._polls.findBy('label', label);
@@ -65,7 +67,9 @@ export default Service.extend({
   },
 
   _schedule(fn, interval) {
-    return setInterval(bind(this, fn), interval);
+    if (typeof setInterval !== 'undefined') {
+      return setInterval(bind(this, fn), interval);
+    }
   },
   _startPoll(key, value) {
     let poll = this._polls.findBy(key, value);
