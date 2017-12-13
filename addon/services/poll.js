@@ -78,7 +78,7 @@ export default Service.extend({
       let newHandle = this._schedule(callback, interval);
       return newHandle;
     } else {
-      console.warn(`No poll was found for ${key} ${value}`);
+      console.warn(`No poll was found for ${key} ${value}`); // eslint-disable-line
     }
   }
 });
