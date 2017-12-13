@@ -1,6 +1,6 @@
-import Service from 'ember-service';
-import { bind } from 'ember-runloop';
-import { A as emberArray } from 'ember-array/utils';
+import Service from '@ember/service';
+import { bind } from '@ember/runloop';
+import { A as emberArray } from '@ember/array';
 
 export default Service.extend({
   init() {

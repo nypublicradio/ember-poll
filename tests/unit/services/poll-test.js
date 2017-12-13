@@ -1,5 +1,5 @@
 import { moduleFor, test } from 'ember-qunit';
-import { later } from 'ember-runloop';
+import { later } from '@ember/runloop';
 
 moduleFor('service:poll', 'Unit | Service | poll', {
 
