@@ -1,5 +1,8 @@
 # ember-poll Changelog
 
+### 1.4.0 (December 13, 2017)
+- upgrade ember-cli and ember to 2.17
+
 ### 1.3.0 (November 13, 2017)
 - #3 Fastbook 1.0 Compat. Thanks @mminkoff!
 
